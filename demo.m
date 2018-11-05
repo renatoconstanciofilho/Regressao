@@ -25,6 +25,7 @@ xlabel('X1');
 ylabel('Y1');
 t = sprintf('Correlação: %d | B0: %d  | B1: %d', c, b0, b1)
 title(t);
+legend('Dados', 'Linha de regressão', 'Location', 'southeast');
 hold off;
 
 figure;
@@ -39,6 +40,7 @@ xlabel('X2');
 ylabel('Y2');
 t = sprintf('Correlação: %d | B0: %d  | B1: %d', c, b0, b1)
 title(t);
+legend('Dados', 'Linha de regressão', 'Location', 'southeast');
 hold off;
 
 figure
@@ -53,6 +55,7 @@ xlabel('X3');
 ylabel('Y3');
 t = sprintf('Correlação: %d | B0: %d  | B1: %d', c, b0, b1)
 title(t);
+legend('Dados', 'Linha de regressão', 'Location', 'southeast');
 hold off;
 
 
