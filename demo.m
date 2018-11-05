@@ -17,7 +17,7 @@ format long;
 c = correlacao(x1,y1);
 [yy,b0,b1] = regressao(x1,y1);
 %https://www.mathworks.com/help/matlab/ref/scatter.html
-scatter(x1,y1);
+scatter(x1,y1,'filled');
 hold on;
 plot(x1,yy);
 grid on;
@@ -32,7 +32,7 @@ figure;
 c = correlacao(x2,y2);
 [yy,b0,b1] = regressao(x2,y2);
 %https://www.mathworks.com/help/matlab/ref/scatter.html
-scatter(x2,y2);
+scatter(x2,y2,'filled');
 hold on;
 plot(x2,yy);
 grid on;
@@ -47,7 +47,7 @@ figure
 c = correlacao(x3,y3);
 [yy,b0,b1] = regressao(x3,y3);
 %https://www.mathworks.com/help/matlab/ref/scatter.html
-scatter(x3,y3);
+scatter(x3,y3,'filled');
 hold on;
 plot(x3,yy);
 grid on;
