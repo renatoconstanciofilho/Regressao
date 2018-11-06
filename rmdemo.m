@@ -1,0 +1,5 @@
+clc;
+clear;
+%https://www.mathworks.com/help/matlab/ref/load.html
+D = load(data,'-mat');
+%A primeira coluna é o tamanho da casa, a segunda coluna é o número de quartos, e a terceira coluna é o preço da casa.
