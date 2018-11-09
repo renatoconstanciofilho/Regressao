@@ -1,7 +1,10 @@
 clc;
-clear y Fs;
+clear all;
+format short;
 
-format long;
+%% Configuração
+percentual_teste = 0.1;
+
 %% Carregamento Arquivo
 %https://www.mathworks.com/help/matlab/ref/load.html
 f = load('data_preg.mat');
@@ -26,26 +29,52 @@ B3 = polyfit(x,y,3);
 plot(x,y3,'k');
 B8 = polyfit(x,y,8);
 [y8] = calcula_y(B8,x);
-plot(x,y8,'r');
+plot(x,y8,'y');
 
 %% EQM
 % 3 Calcular EQM
+
 [eqm2] = calcula_eqm(y2);
 [eqm3] = calcula_eqm(y3);
 [eqm8] = calcula_eqm(y8);
 
 %% Aprendizado
 % 4 Separar os dados 90%/10%
+qtd_teste = round(length(x) * percentual_teste);
+sorteados = randperm(length(x),qtd_teste);
+x_teste = x(sorteados);
+y_teste = y(sorteados);
+x_aprend = x;
+y_aprend = y;
+x_aprend(sorteados,:) = [];
+y_aprend(sorteados,:) = [];
+
+%% Calcular regressão da base de aprendizado
 % 5 Calcular o B e regressao 90%
-% 6 Calcular o regressao EQM teste (com B do treinamento)
+BA2 = polyfit(x_aprend, y_aprend, 2);
+ya2 = calcula_y(BA2, x_aprend);
+BA3 = polyfit(x_aprend, y_aprend, 3);
+ya3 = calcula_y(BA3, x_aprend);
+BA8 = polyfit(x_aprend, y_aprend, 8);
+ya8 = calcula_y(BA8, x_aprend);
 
 
-%polyfit precisa inverter
-%polyfit(x,y,n) (n = 2)
-% beta só com dados de treinamento
-% y = B(3) + (B(2)*X) + (B(1)*X^2
+%% Calcular regressao da base de teste usando B do treinamento
+% 6 Calcular A regressao EQM teste (com B do treinamento)
+yt2 = calcula_y(BA2, x_teste);
+yt3 = calcula_y(BA3, x_teste);
+yt8 = calcula_y(BA8, x_teste);
 
-%teste
-%randperm
-%pegar os 5 primeiros
-% pega o beta do treinamento e aplica dos dados de teste e verifica o EQM
+[eqmt2] = calcula_eqm(yt2);
+[eqmt3] = calcula_eqm(yt3);
+[eqmt8] = calcula_eqm(yt8);
+
+%% Display dos EQM para comparação
+disp("----- Erro Quadrático Médio Total -----");
+disp(sprintf('EQM 2 pontos: %d', eqm2));
+disp(sprintf('EQM 3 pontos: %d', eqm3));
+disp(sprintf('EQM 8 pontos: %d', eqm8));
+disp("");disp("----- Erro Quadrático Médio Teste -----");
+disp(sprintf('EQM 2 pontos: %d', eqmt2));
+disp(sprintf('EQM 3 pontos: %d', eqmt3));
+disp(sprintf('EQM 8 pontos: %d', eqmt8));
