@@ -1,11 +1,13 @@
 clc;
 clear y Fs;
+
+format long;
 %% Carregamento Arquivo
 %https://www.mathworks.com/help/matlab/ref/load.html
 f = load('data.mat');
 %A primeira coluna é o tamanho da casa, a segunda coluna é o número de quartos, e a terceira coluna é o preço da casa.
 
-%% Colocado os dados em Matriz
+%% Colocado os dados em matrizes
 %https://www.mathworks.com/help/matlab/import_export/load-parts-of-variables-from-mat-files.html
 %https://www.mathworks.com/matlabcentral/answers/182662-conversion-of-a-matrix-into-multiple-column-vectors
 
@@ -64,7 +66,7 @@ hold off;
 %% Calcule o preço de uma casa que tem tamanho de 1650 e 3 quartos. O resultado deve ser igual a 293081.
 qg = [1 1650 3];
 resultadoQG = qg * B;
-disp(sprintf('Valor previsto: %d', resultadoQG));
+disp(sprintf('Valor previsto: R$ %d', resultadoQG));
 
 
 %https://www.mathworks.com/help/stats/regress.html
