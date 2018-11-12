@@ -29,14 +29,13 @@ B3 = polyfit(x,y,3);
 plot(x,y3,'k');
 B8 = polyfit(x,y,8);
 [y8] = calcula_y(B8,x);
-plot(x,y8,'y');
+plot(x,y8,'r');
 
 %% EQM
 % 3 Calcular EQM
-
-[eqm2] = calcula_eqm(y2);
-[eqm3] = calcula_eqm(y3);
-[eqm8] = calcula_eqm(y8);
+[eqm2] = calcula_eqm(y, y2);
+[eqm3] = calcula_eqm(y, y3);
+[eqm8] = calcula_eqm(y, y8);
 
 %% Aprendizado
 % 4 Separar os dados 90%/10%
@@ -58,16 +57,16 @@ ya3 = calcula_y(BA3, x_aprend);
 BA8 = polyfit(x_aprend, y_aprend, 8);
 ya8 = calcula_y(BA8, x_aprend);
 
-
 %% Calcular regressao da base de teste usando B do treinamento
 % 6 Calcular A regressao EQM teste (com B do treinamento)
 yt2 = calcula_y(BA2, x_teste);
 yt3 = calcula_y(BA3, x_teste);
 yt8 = calcula_y(BA8, x_teste);
 
-[eqmt2] = calcula_eqm(yt2);
-[eqmt3] = calcula_eqm(yt3);
-[eqmt8] = calcula_eqm(yt8);
+%nesse eqm pegar os 5 selecionados e diminuir do y do estimado (teste)
+[eqmt2] = calcula_eqm(y,yt2);
+[eqmt3] = calcula_eqm(y,yt3);
+[eqmt8] = calcula_eqm(y,yt8);
 
 %% Display dos EQM para comparação
 disp("----- Erro Quadrático Médio Total -----");
