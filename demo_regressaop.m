@@ -63,10 +63,11 @@ yt2 = calcula_y(BA2, x_teste);
 yt3 = calcula_y(BA3, x_teste);
 yt8 = calcula_y(BA8, x_teste);
 
-%nesse eqm pegar os 5 selecionados e diminuir do y do estimado (teste)
-[eqmt2] = calcula_eqm(y,yt2);
-[eqmt3] = calcula_eqm(y,yt3);
-[eqmt8] = calcula_eqm(y,yt8);
+% calcular o EQM utilizando os 5 selecionados e o y calculado dos valores
+% de teste
+[eqmt2] = calcula_eqm(y_aprend,ya2);
+[eqmt3] = calcula_eqm(y_aprend,ya3);
+[eqmt8] = calcula_eqm(y_aprend,ya8);
 
 %% Display dos EQM para comparação
 disp("----- Erro Quadrático Médio Total -----");
